@@ -1,0 +1,28 @@
+{
+  "apps": [{
+      "name": "sujor-admin",
+      "script": "",
+      "env": {
+          "COMMON_VARIABLE": "true"
+      },
+      "env_production": {
+          "NODE_ENV": "production"
+      }
+  }],
+  "deploy": {
+      "production": {
+          "user": "leo",
+          "host": ["116.62.231.170"],
+          "port": "39999",
+          "ref": "origin/master",
+          "repo": "git@gitee.com:leo-cai/sujor-admin.git",
+          "path": "/www/sujor-admin",
+          "ssh_options": "StrictHostKeyChecking=no",
+          "pre-deploy-local": "echo 'Web Deploy Done!'",
+          "post-deploy": "git pull && npm install && npm run build",
+          "env": {
+              "NODE_ENV": "production"
+          }
+      }
+  }
+}
